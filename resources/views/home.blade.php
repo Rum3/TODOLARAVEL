@@ -18,9 +18,12 @@
                 <ul>    
                     @foreach($todolists as $todolist)
                         <li class="list-group-item">
-                            {{$todolist->content}}
-                                <livewire:update :todolistId="$todolist->id" >
-                                <livewire:delete-todo :todoId="$todolist->id" />
+                       <div class="oldContent">{{$todolist->content}}</div>
+                        <div class="edit">
+                            <livewire:update :todolistId="$todolist->id" >
+                        </div>
+                                <button id="editButton"  class="btn-edit">Edit</button>
+                                <livewire:delete-todo :todoId="$todolist->id"/>
                         </li>
                     @endforeach
                 </ul>
@@ -40,5 +43,6 @@
     <script src="{{ asset('livewire/livewire.js') }}"></script>
     @livewireScripts
     <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

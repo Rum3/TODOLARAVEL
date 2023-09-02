@@ -64,6 +64,37 @@ button.delete:hover {
   background-color: #ff5252;
 }
 
+button.btn {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin:5px ;
+  position: absolute;
+  cursor: pointer;
+}
+
+button.btn:hover {
+  background-color: greenyellow;
+}
+
+button.btn-edit {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  right: 80px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+button.btn-edit:hover {
+  background-color:greenyellow;
+}
+
 a.btn {
   background-color: #ff6b6b;
   color: white;
@@ -121,4 +152,10 @@ button.delete {
 a.btn {
   background-color: #ff6b6b;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#content {
+  border: 2px solid #ff6b6b;
+  border-radius: 5px;
+  outline: none; /* Премахва ограничителя при фокусиране (outline) */
 }

@@ -1,8 +1,7 @@
 <div>
     <div class="form-group">
-        <label for="content">Съдържание на задачата</label>
-        <textarea wire:model="content" class="form-control" id="content" rows="3"></textarea>
+        <input wire:model="content"  class="form-control" id="content" rows="3">
     </div>
-    <button wire:click="updateTodoList" class="btn btn-primary">Запази</button>
+    <button wire:click="updateTodoList" class="btn">Запази</button>
 </div>
 
