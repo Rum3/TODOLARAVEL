@@ -14,25 +14,11 @@ class TodoListController extends Controller
         return view('home', compact('todolists'));
     }
 
-    // public function destroy(TodoList $todolist)
-    // {
-    //     $todolist->delete();
-    //     return back();
-    // }
     
     public function edit($id)
     {
         $todolist = TodoList::findOrFail($id);
         return view('edit', compact('todolist'));
     }
-
-    // public function update(Request $request, $id)
-    // {
-    //     $todolist = TodoList::findOrFail($id);
-    //     $todolist->content = $request->input('content');
-    //     $todolist->save();
-
-    //     return redirect()->route('index')->with('success', 'Задачата е успешно променета.');
-    // }
 
 }
