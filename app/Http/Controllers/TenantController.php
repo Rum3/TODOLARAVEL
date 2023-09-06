@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class TenantController extends Controller
@@ -15,27 +16,28 @@ class TenantController extends Controller
         return view('admin', compact('users'));
     }
     
-    public function showTenant() {
-        return view('tenant.createDomein');
+    public function showTenant($id) {
+        return view('tenant.createDomein', ['user_id' => $id]);
     }
+    
 
     public function storeTenant(Request $request)
-{
-    // Валидация на входните данни
-    $request->validate([
-        'tenant_id' => 'required|unique:tenants,id',
-        'domain' => 'required|unique:domains,domain',
-    ]);
+    {
+        $request->validate([
+            'tenant_id' => 'required|unique:tenants,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
     
-    // Създаване на нов наемател и домейн
-    $tenant = new Tenant(['id' => $request->input('tenant_id')]);
-    $domain = new Tenant(['domain' => $request->input('domain')]);
+        $tenant = new Tenant(['id' => $request->input('tenant_id')]);
+        $tenant->save();
     
-    // Съхранение на данните в базата данни
-    $tenant->save();
-    $tenant->domains()->save($domain);
+        $user_id = $request->input('user_id');
+        $user = User::find($user_id); 
+        $user->tenant_id = $request->input('tenant_id');
+        $user->save();
     
-    return redirect()->back();
-}
+        return redirect()->back()->with('success', 'Тенантът и потребителят са запазени успешно');
+    }
+    
 
 }

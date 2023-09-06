@@ -24,13 +24,12 @@ Route::middleware([
     
     Route::controller(LoginRegisterController::class)->group(function() {
         Route::get('/register', 'register')->name('register');
-        Route::post('/store', 'store')->name('store');
         Route::get('/login', 'login')->name('login');
         Route::post('/authenticate', 'authenticate')->name('authenticate');
         Route::get('/dashboard', 'dashboard')->name('dashboard');
         Route::post('/logout', 'logout')->name('logout');
     });
-    // Route::get('/', [TodoListController::class,'index'])->name('index');
-    Route::get('/tenant', [TenantController::class,'showTenant'])->name('tenant');
+    Route::get('/todo', [TodoListController::class,'index'])->name('index');
+    Route::get('/tenant/{id}', [TenantController::class,'showTenant'])->name('tenant');
     Route::post('/tenants', [TenantController::class,'storeTenant'])->name('tenants.store');
 });

@@ -1,5 +1,18 @@
 
 jQuery(document).ready(function($){
+    $(".register").submit(function (e) {
+        e.preventDefault();
+    
+        var formData = {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            password: $('#password').val(),
+            password_confirmation: $('#password_confirmation').val()
+        };
+    
+        Livewire.emit('storeTodo', formData);
+    });
+    
     $(".form").submit(function (e) {
         e.preventDefault();
         

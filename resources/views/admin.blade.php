@@ -7,7 +7,7 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Role</th>
+            <th>Add DataBase</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +16,9 @@
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->role }}</td>
+                    <td>
+                        <a href="{{ route('tenant', ['id' => $user->id]) }}" class="btn btn-primary">Add</a>
+                    </td>
                 </tr>
             @endif
         @endforeach

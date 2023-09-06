@@ -22,29 +22,6 @@ class LoginRegisterController extends Controller
         return view('auth.register');
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'role' => 'required'
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' => Hash::make($request->password)
-        ]);
-
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
-        return redirect()->route('dashboard')
-        ->withSuccess('You have successfully registered & logged in!');
-    }
-
     public function login()
     {
         return view('auth.login');
