@@ -17,15 +17,12 @@ class AddTodo extends Component
             $user = Auth::user();
             $tenantDatabase = 'tenant' . $user->tenant_id;
             
-            // Проверете дали вече сте свързани към желаната база данни
             if (config('database.default') !== $tenantDatabase) {
-                // Променете връзката с базата данни
                 config(['database.connections.mysql.database' => $tenantDatabase]);
                 DB::reconnect('mysql');
             }
         }
-    
-        // Валидация и създаване на запис
+        
         $this->validate([
             'content' => 'required'
         ]);

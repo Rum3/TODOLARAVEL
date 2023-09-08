@@ -18,7 +18,6 @@ class Update extends Component
 
         session()->flash('success', 'Задачата е успешно променета.');
 
-        // Извикваме event, за да актуализираме данните на родителския компонент.
         $this->emit('todolistUpdated');
     }
 

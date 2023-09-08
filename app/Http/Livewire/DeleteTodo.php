@@ -3,11 +3,11 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\TodoList; // Import the Todo model
+use App\Models\TodoList;
 
 class DeleteTodo extends Component
 {
-    public $todoId; // Property to hold the todo ID
+    public $todoId;
 
     public function deleteTodo()
     {
@@ -16,7 +16,7 @@ class DeleteTodo extends Component
         if ($todo) {
             $todo->delete();
             session()->flash('message', 'Todo успешно изтрит.');
-            $this->emit('todoDeleted'); // Emit event to refresh the list
+            $this->emit('todoDeleted');
         }
     }
 

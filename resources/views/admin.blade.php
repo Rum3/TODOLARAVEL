@@ -2,15 +2,17 @@
 
 @section('content')
 <br><br><br>    
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Add DataBase</th>
-        </tr>
-    </thead>
-    <tbody>
+
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th scope="col">dataBase</th>
+    </tr>
+  </thead>
+  <tbody>
         @foreach ($users as $user)
         @if ($user->role === 'user')
                 <tr>
